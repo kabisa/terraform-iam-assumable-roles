@@ -100,7 +100,7 @@ variable "instance_scheduler_trusted_account_id" {
 
 variable "create_instance_scheduler_role" {
   description = "Whether instance scheduler role has to be created"
-  default = true
+  default = false
 }
 
 # Nagios
