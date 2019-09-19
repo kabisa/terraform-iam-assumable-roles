@@ -1,8 +1,8 @@
 # Instance Scheduler 
 
 resource "aws_iam_role" "this" {
-  count = "${var.create_instance_scheduler_role ? 1 : 0}"
-  name = "instance_scheduler_role"
+  count = var.create_instance_scheduler_role ? 1 : 0
+  name  = "instance_scheduler_role"
 
   assume_role_policy = <<EOF
 {
@@ -19,12 +19,13 @@ resource "aws_iam_role" "this" {
   ]
 }
 EOF
+
 }
 
 resource "aws_iam_role_policy" "this" {
-  count = "${var.create_instance_scheduler_role ? 1 : 0}"
-  name = "instance_scheduler_policy"
-  role = "${aws_iam_role.this.id}"
+  count = var.create_instance_scheduler_role ? 1 : 0
+  name  = "instance_scheduler_policy"
+  role  = aws_iam_role.this[0].id
 
   policy = <<EOF
 {
@@ -71,4 +72,6 @@ resource "aws_iam_role_policy" "this" {
     ]
 }
 EOF
+
 }
+
