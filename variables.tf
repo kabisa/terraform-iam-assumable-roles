@@ -95,22 +95,23 @@ variable "max_session_duration" {
 
 variable "instance_scheduler_trusted_account_id" {
   description = "AWS account id where the master instance scheduler is running"
-  default = ""
+  default     = ""
 }
 
 variable "create_instance_scheduler_role" {
   description = "Whether instance scheduler role has to be created"
-  default = false
+  default     = false
 }
 
 # Nagios
 
 variable "nagios_role_arn" {
   description = "arn of principal which assumes nagios role"
-  default = ""
+  default     = ""
 }
 
 variable "create_nagios_role" {
   description = "Whether nagios role has to be created"
-  default = false
+  default     = false
 }
+
