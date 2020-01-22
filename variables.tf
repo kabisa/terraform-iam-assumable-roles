@@ -115,3 +115,9 @@ variable "create_nagios_role" {
   default     = false
 }
 
+# Datadog
+
+variable "create_datadog_role" {
+  description = "Whether datadog role has to be created"
+  default     = false
+}
