@@ -27,6 +27,8 @@ resource "aws_iam_role_policy_attachment" "datadog_role_policy_attachment" {
 }
 
 resource "aws_iam_policy" "datadog_policy" {
+  count = var.create_datadog_role ? 1 : 0
+
   name        = "DatadogAWSIntegrationPolicy"
   path        = "/"
   description = "Policy for Datadog"
