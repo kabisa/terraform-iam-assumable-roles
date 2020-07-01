@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "datadog_policy_document" {
 resource "aws_iam_role_policy_attachment" "datadog_role_policy_attachment" {
   count = var.create_datadog_role ? 1 : 0
 
-  policy_arn = aws_iam_policy.datadog_policy.arn
+  policy_arn = aws_iam_policy.datadog_policy[0].arn
   role       = aws_iam_role.datadog_iam_role[0].name
 }
 
