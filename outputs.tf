@@ -61,3 +61,7 @@ output "readonly_iam_role_requires_mfa" {
   value       = var.readonly_role_requires_mfa
 }
 
+output "datadog_role_name" {
+  description = "Datadog role name"
+  value = aws_iam_role.datadog_iam_role.name
+}
