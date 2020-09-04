@@ -103,6 +103,18 @@ variable "create_instance_scheduler_role" {
   default     = false
 }
 
+# Cloudwatch Dashboard Sharing
+
+variable "monitor_account_id" {
+  description = "Monitor AWS account id where the master Cloudwatch Dashboard is configured"
+  default     = ""
+}
+
+variable "create_cloudwatch_share_role" {
+  description = "Whether cloudwatch share role has to be created"
+  default     = false
+}
+
 # Nagios
 
 variable "nagios_role_arn" {
