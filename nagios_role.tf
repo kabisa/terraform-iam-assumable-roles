@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "nagios_policy_document" {
     actions = ["sts:AssumeRole"]
     principals {
       type        = "AWS"
-      identifiers = [var.nagios_role_arn]
+      identifiers = var.nagios_role_arn
     }
   }
 }
