@@ -34,6 +34,7 @@ resource "aws_iam_role_policy" "this" {
         {
             "Action": [
                 "ec2:DescribeInstances",
+                "ec2:DescribeRegions",
                 "ec2:StartInstances",
                 "ec2:StopInstances",
                 "ec2:ModifyInstanceAttribute",
@@ -53,7 +54,10 @@ resource "aws_iam_role_policy" "this" {
                 "rds:StopDBInstance",
                 "rds:AddTagsToResource",
                 "rds:RemoveTagsFromResource",
-                "rds:DeleteDBSnapshot"
+                "rds:DeleteDBSnapshot",
+                "rds:StartDBCluster",
+                "rds:StopDBCluster",
+                "rds:DescribeDBClusters"
             ],
             "Resource": [
                 "*"
@@ -74,4 +78,3 @@ resource "aws_iam_role_policy" "this" {
 EOF
 
 }
-
