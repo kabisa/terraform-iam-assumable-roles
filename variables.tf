@@ -127,8 +127,8 @@ variable "create_nagios_role" {
   default     = false
 }
 
-variable "create_nagios_budget_role" {
-  description = "Whether nagios budget role has to be created"
+variable "add_budget_policy_attachment" {
+  description = "Whether to add an additional policy attachment that adds the 'AWSBudgetsReadOnlyAccess' policy to the nagios role"
   default     = false
 }
 

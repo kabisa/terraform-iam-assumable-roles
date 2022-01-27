@@ -27,7 +27,7 @@ resource "aws_iam_role_policy_attachment" "nagios_cloudwatch_read" {
 }
 
 resource "aws_iam_role_policy_attachment" "nagios_cloudwatch_budget_read" {
-  count = var.create_nagios_budget_role ? 1 : 0
+  count = var.add_budget_policy_attachment ? 1 : 0
 
   policy_arn = "arn:aws:iam::aws:policy/AWSBudgetsReadOnlyAccess"
   role       = aws_iam_role.nagios_iam_role[count.index].name
