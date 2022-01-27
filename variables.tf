@@ -127,6 +127,11 @@ variable "create_nagios_role" {
   default     = false
 }
 
+variable "create_nagios_budget_role" {
+  description = "Whether nagios budget role has to be created"
+  default     = false
+}
+
 # Datadog
 
 variable "create_datadog_role" {
