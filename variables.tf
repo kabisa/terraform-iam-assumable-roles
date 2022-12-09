@@ -138,3 +138,10 @@ variable "create_datadog_role" {
   description = "Whether datadog role has to be created"
   default     = false
 }
+
+# SLA Report
+
+variable "create_sla_reporter_role" {
+  description = "Create role used by SLA report generator"
+  default     = false
+}
