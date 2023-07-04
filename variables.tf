@@ -3,6 +3,12 @@ variable "trusted_role_arns" {
   default     = []
 }
 
+variable "trusted_roles_ci_cd" {
+  description = "ARNs of AWS entities who can assume these roles for CI/CD"
+  default     = []
+}
+
+
 variable "mfa_age" {
   description = "Max age of valid MFA (in seconds) for roles which require MFA"
   default     = 86400
