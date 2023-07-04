@@ -44,6 +44,16 @@ data "aws_iam_policy_document" "assume_role_with_mfa" {
       values   = [var.mfa_age]
     }
   }
+  statement {
+    effect = "Allow"
+
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "AWS"
+      identifiers = var.trusted_roles_ci_cd
+    }
+  }
 }
 
 # Admin
