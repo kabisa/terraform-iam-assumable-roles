@@ -3,11 +3,6 @@ variable "trusted_role_arns" {
   default     = []
 }
 
-variable "trusted_roles_ci_cd" {
-  description = "ARNs of AWS entities who can assume these roles for CI/CD"
-  default     = []
-}
-
 
 variable "mfa_age" {
   description = "Max age of valid MFA (in seconds) for roles which require MFA"
@@ -125,7 +120,7 @@ variable "create_cloudwatch_share_role" {
 
 variable "nagios_role_arn" {
   description = "arn of principal which assumes nagios role"
-  default     = ""
+  default     = []
 }
 
 variable "create_nagios_role" {
@@ -150,4 +145,23 @@ variable "create_datadog_role" {
 variable "create_sla_reporter_role" {
   description = "Create role used by SLA report generator"
   default     = false
+}
+
+# github
+
+variable "create_ci_cd_role" {
+  description = "Wheter ci_cd_role has to be created"
+  default     = false
+  type        = bool
+}
+
+variable "trusted_roles_ci_cd" {
+  description = "ARNs of AWS entities who can assume these roles for CI/CD"
+  default     = []
+}
+
+variable "ci_cd_role_inline_policies" {
+  default     = {}
+  description = "Inline policies map with policy name as key and json as value."
+  type        = map(string)
 }

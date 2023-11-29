@@ -9,16 +9,6 @@ data "aws_iam_policy_document" "assume_role" {
       identifiers = var.trusted_role_arns
     }
   }
-  statement {
-    effect = "Allow"
-
-    actions = ["sts:AssumeRole"]
-
-    principals {
-      type        = "AWS"
-      identifiers = var.trusted_roles_ci_cd
-    }
-  }
 }
 
 data "aws_iam_policy_document" "assume_role_with_mfa" {
@@ -42,16 +32,6 @@ data "aws_iam_policy_document" "assume_role_with_mfa" {
       test     = "NumericLessThan"
       variable = "aws:MultiFactorAuthAge"
       values   = [var.mfa_age]
-    }
-  }
-  statement {
-    effect = "Allow"
-
-    actions = ["sts:AssumeRole"]
-
-    principals {
-      type        = "AWS"
-      identifiers = var.trusted_roles_ci_cd
     }
   }
 }
