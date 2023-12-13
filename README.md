@@ -4,6 +4,53 @@ Creates predefined IAM roles (admin, poweruser and readonly) which can be assume
 
 Trusted resources can be any [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) - typically, AWS accounts and users.
 
+```
+module "iam-roles" {
+  source = "git@github.com:kabisa/terraform-iam-assumable-roles.git?ref=[version]"
+
+  trusted_role_arns = [
+    "arn:aws:iam::${local.dovetail-iam}:root",
+    "arn:aws:iam::${local.kabisa-iam}:root",
+  ]
+
+  create_ci_cd_role = true
+
+  trusted_roles_ci_cd = [
+    "arn:aws:iam::{[account-id]}:role/github_actions_role",
+  ]
+
+  ci_cd_role_managed_policies = [
+    "arn:aws:iam::aws:policy/AmazonSSMFullAccess",
+    "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+  ]
+
+  ci_cd_role_inline_policies = {
+    "example_inline_policy" : data.aws_iam_policy_document.example.json,
+    "example2" : data.aws_iam_policy_document.example2.json
+  }
+
+  create_admin_role     = true
+  create_poweruser_role = true
+  create_readonly_role  = true
+}
+
+data "aws_iam_policy_document" "example" {
+  statement {
+    actions   = ["ssm:*", "ec2:*"]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "example2" {
+  statement {
+    actions   = ["s3:*"]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+}
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Inputs
