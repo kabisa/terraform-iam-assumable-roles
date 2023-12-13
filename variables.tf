@@ -147,7 +147,7 @@ variable "create_sla_reporter_role" {
   default     = false
 }
 
-# github
+# CI_CD
 
 variable "create_ci_cd_role" {
   description = "Wheter ci_cd_role has to be created"
@@ -164,4 +164,10 @@ variable "ci_cd_role_inline_policies" {
   default     = {}
   description = "Inline policies map with policy name as key and json as value."
   type        = map(string)
+}
+
+variable "ci_cd_role_managed_policies" {
+  default     = []
+  description = "Managed policies list."
+  type        = list(string)
 }

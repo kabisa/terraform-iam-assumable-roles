@@ -5,6 +5,7 @@ resource "aws_iam_role" "ci_cd_iam_role" {
 
   name               = "ci_cd_access_role"
   assume_role_policy = data.aws_iam_policy_document.ci_cd_policy_document[0].json
+  managed_policy_arns = var.ci_cd_role_managed_policies
 
   dynamic "inline_policy" {
     for_each = var.ci_cd_role_inline_policies
