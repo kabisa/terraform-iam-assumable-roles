@@ -1,5 +1,3 @@
-# Nagios
-
 resource "aws_iam_role" "ci_cd_iam_role" {
   count = var.create_ci_cd_role ? 1 : 0
 
