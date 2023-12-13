@@ -6,7 +6,7 @@ Trusted resources can be any [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/U
 
 ```
 module "iam-roles" {
-  source = "git@github.com:kabisa/terraform-iam-assumable-roles.git?ref=task/refactor_ci_cd_role"
+  source = "git@github.com:kabisa/terraform-iam-assumable-roles.git?ref=[version]"
 
   trusted_role_arns = [
     "arn:aws:iam::${local.dovetail-iam}:root",
